@@ -56,7 +56,7 @@ function Get-CFHeader {
                 throw $message
             }
             $token = ($response | ConvertFrom-Json)
-            $header = Set-Headers $token
+            $header = Set-CFHeaders $token
         }
         return $header
     }
