@@ -10,10 +10,13 @@
 .PARAMETER API
     This parameter is the URL for the Cloud Foundry API endpoint to use.  Something like https://api.cf.some.domain.com.
 .EXAMPLE
-   Get-Token "https://api.cf.my.domain.com" "bjones" | Set-Headers
+   The following command will prompt you for a password, and then try to exchange your credentials for an OAuth2 token that is then stored in your session for use with later commands.
 
-   or the insecure way that stores your password in you command history for anyone to find/see:
-   Get-Token "https://api.cf.my.domain.com" "bjones" $("P@ssword1" | ConvertTo-SecureString -AsPlainText -Force) | Set-Headers
+   Get-CFToken "https://api.cf.my.domain.com" "bjones" | Set-Headers
+.EXAMPLE
+   This is an insecure way to pass in a password for non-interactive jobs:
+
+   Get-CFToken "https://api.cf.my.domain.com" "bjones" $("P@ssword1" | ConvertTo-SecureString -AsPlainText -Force) | Set-Headers
 #>
 function Get-CFToken {
 
